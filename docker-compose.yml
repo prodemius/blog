@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  client-web:
+    container_name: client-web
+    build:
+      context: ./app/client/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    networks:
+      - app-network
+
+    # 로컬 개발용으로 코드 핫리로드 하고 싶다면 (선택)
+    # volumes:
+    #   - ./app/client/web:/app
+    #   - /app/node_modules
+
+networks:
+  app-network:
+    driver: bridge
