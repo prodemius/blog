@@ -6,14 +6,17 @@ services:
     build:
       context: ./app/client/web
       dockerfile: Dockerfile
+
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
+
     environment:
       NODE_ENV: production
+
     networks:
       - app-network
 
-    # 로컬 개발용으로 코드 핫리로드 하고 싶다면 (선택)
+    # 로컬 개발용으로 핫리로드가 필요하면 나중에 다시 활성화
     # volumes:
     #   - ./app/client/web:/app
     #   - /app/node_modules
